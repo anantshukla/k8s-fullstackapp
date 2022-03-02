@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: frontend-react
+  name: frontend-react
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-react
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: frontend-react
+    spec:
+      containers:
+      - image: theanantshukla/k8stestfrontend:latest
+        name: frontend-react
+        imagePullPolicy: Always
+        resources: {}
+        ports:
+          - containerPort: 80
+        env:
+        - name: REACT_APP_API_BASE_URL
+          value: 'http://20.127.58.233:3001'
+        - name: REACT_APP_SOCKET_BASE_URL
+          value: 'http://20.120.110.246:3002/'

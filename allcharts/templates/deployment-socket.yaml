@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: socket-server
+  name: socket-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: socket-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: socket-server
+    spec:
+      containers:
+      - image: theanantshukla/k8stestsocketservice:latest
+        name: socket-server
+        imagePullPolicy: Always
+        resources: {}
+        ports:
+          - containerPort: 3002
